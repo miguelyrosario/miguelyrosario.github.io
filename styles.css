@@ -1,0 +1,1376 @@
+/* ========================================================
+   VARIABLES DE COLOR Y TIPOGRAFÍA (PALETA 4 TONOS VERDE OLIVA Y ORO)
+   ======================================================== */
+:root {
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Los Tonos de Verde y Fondos Solicitados */
+  --tone-1: #E4E6D9;  /* Tono 1: Marfil salvia claro (Hero y Bienvenida) */
+  --tone-2: #C4CEB5;  /* Tono 2: Salvia suave (Cuándo y Dónde) */
+  --tone-3: #90A78B;  /* Tono 3: Eucalipto / Oliva medio (Información Importante) */
+  --tone-form: #ADC0A9; /* Tono Formulario: Verde salvia más claro que Info para diferenciarlo */
+  --tone-4: #4E6350;  /* Tono 4: Oliva bosque profundo (Regalo & Primario) */
+
+  --color-bg: var(--tone-1);
+  --color-surface: #FFFFFF;
+  --color-surface-soft: #F6F8F3;
+  --color-primary: #4E6350;          /* Verde Oliva Principal (#4E6350) */
+  --color-primary-hover: #3C4D3E;    /* Verde Oliva Profundo */
+  --color-secondary: #4E6350;        /* Secundario */
+  --color-secondary-soft: rgba(78, 99, 80, 0.12);
+  --color-text: #1F281E;             /* Grafito profundo con matiz oliva */
+  --color-text-muted: #4A5647;       /* Gris oliva suave */
+  --color-border: #C4CEB5;           /* Borde tono salvia */
+  --color-border-subtle: #D8DFCD;
+
+  /* Tonalidades Doradas para nombres y detalles especiales */
+  --color-gold: #C5A059;
+  --color-gold-light: #DFC8A5;
+  --color-gold-dark: #A6823B;
+  --color-gold-gradient: linear-gradient(135deg, #DFBE72 0%, #C5A059 40%, #A88339 100%);
+
+  --color-success: #3E7C59;
+  --color-danger: #C05746;
+  --color-warning-bg: #F9F8F2;
+  --color-warning-border: #DDE2D8;
+  --color-warning-text: #4E6350;
+
+  --shadow-sm: 0 4px 14px rgba(35, 45, 30, 0.06);
+  --shadow-md: 0 8px 24px rgba(35, 45, 30, 0.10);
+  --shadow-lg: 0 16px 36px rgba(35, 45, 30, 0.14);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --transition: all 0.3s ease;
+}
+
+/* ========================================================
+   RESET Y ESTILOS BASE
+   ======================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Contenedores */
+.container {
+  width: 90%;
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.container-sm {
+  max-width: 680px;
+}
+
+.container-md {
+  max-width: 860px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Tipografía */
+h1, h2, h3, h4, .section-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.section-title {
+  font-size: 2.6rem;
+  color: var(--color-text);
+  margin-bottom: 0.8rem;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.icon-decoration {
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Secciones */
+.section {
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sección Cuándo y Dónde (Tono 2: #C4CEB5) */
+.section-lugares,
+#lugares {
+  background-color: var(--tone-2);
+}
+
+#lugares .section-title {
+  color: #1A261C;
+}
+
+#lugares .section-subtitle {
+  color: #384639;
+}
+
+/* Sección Información Importante (Tono 3: #90A78B) */
+.section-info,
+#info {
+  background-color: var(--tone-3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.section-info .section-title {
+  color: #142115;
+}
+
+.section-info .section-subtitle {
+  color: #263527;
+}
+
+/* Sección Formulario RSVP (Tono verde más claro: #ADC0A9 - diferenciada de Info) */
+.rsvp-section,
+#rsvp {
+  background-color: var(--tone-form);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.rsvp-section .section-title {
+  color: #172418;
+}
+
+.rsvp-section .section-subtitle {
+  color: #2B3D2D;
+}
+
+/* ========================================================
+   NAVBAR
+   ======================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(228, 230, 217, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(196, 206, 181, 0.8);
+  transition: var(--transition);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.nav-logo {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  line-height: 1.3;
+  text-decoration: none;
+  color: #B58A38;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1em 0;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 1px rgba(138, 101, 41, 0.2);
+}
+
+.logo-mobile {
+  display: none;
+}
+
+.logo-desktop {
+  display: inline;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+.btn-nav {
+  padding: 0.5rem 1.2rem;
+  background-color: var(--color-primary);
+  color: #fff !important;
+  border-radius: var(--radius-sm);
+}
+
+.btn-nav:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+/* ========================================================
+   HERO / PORTADA (Tono 1: #E4E6D9)
+   ======================================================== */
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--tone-1);
+  background: linear-gradient(180deg, #E4E6D9 0%, #DCE1D1 100%);
+  padding: 6.5rem 1.5rem 4.5rem;
+  overflow: hidden;
+}
+
+.hero-container {
+  width: 92%;
+  max-width: 1160px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-split-grid {
+  display: grid;
+  grid-template-columns: 0.92fr 1.25fr;
+  gap: 2.8rem;
+  align-items: center;
+}
+
+/* Columna Izquierda: Foto */
+.hero-photo-col {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-photo-frame {
+  width: 100%;
+  max-width: 430px;
+  border-radius: var(--radius-lg);
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+}
+
+.hero-photo-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 42px rgba(40, 48, 37, 0.15);
+}
+
+.hero-photo {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: calc(var(--radius-lg) - 6px);
+  display: block;
+}
+
+/* Columna Derecha: Contenido Centrado en su mitad */
+.hero-text-centered {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: visible;
+}
+
+.hero-subtitle {
+  display: inline-block;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+/* Nombres en Letras Doradas (ambos en la misma fila y sin recortar letras) */
+.hero-names {
+  font-family: var(--font-script);
+  font-size: clamp(2.5rem, 3.8vw, 4.2rem);
+  line-height: 1.45;
+  color: #B58A38;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75), 0 2px 6px rgba(110, 80, 25, 0.3);
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0.2em 0.1em;
+  margin-bottom: 0.3rem;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  overflow: visible;
+  max-width: 100%;
+}
+
+.hero-date {
+  font-size: 1.3rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-family: var(--font-serif);
+  margin-bottom: 1.8rem;
+}
+
+/* Cuenta Atrás */
+.countdown-wrapper {
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.65);
+  padding: 1.2rem 1.4rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(223, 229, 220, 0.9);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 440px;
+}
+
+.countdown-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.countdown-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.countdown-box {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 0.7rem 0.95rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  min-width: 68px;
+  text-align: center;
+  border: 1px solid var(--color-border);
+}
+
+.countdown-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.countdown-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+  display: block;
+}
+
+.countdown-divider {
+  font-size: 1.4rem;
+  font-family: var(--font-serif);
+  color: var(--color-border);
+}
+
+/* Formato del contador post-boda (solo días y debajo "desde el gran día") */
+.post-wedding-countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 1rem;
+}
+
+.post-wedding-days {
+  font-family: var(--font-serif);
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.post-wedding-sub {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-secondary);
+  margin-top: 0.4rem;
+}
+
+/* ========================================================
+   BOTONES
+   ======================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(91, 110, 78, 0.35);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(91, 110, 78, 0.45);
+}
+
+.btn-hero {
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 1.2rem;
+  transition: var(--transition);
+}
+
+.btn-card:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+/* ========================================================
+   BIENVENIDA
+   ======================================================== */
+.welcome-section {
+  padding: 4.5rem 0 3.5rem;
+}
+
+.welcome-text {
+  font-size: 1.2rem;
+  font-family: var(--font-serif);
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* ========================================================
+   TARJETAS DE LUGARES (IMÁGENES COMPLETAS SIN CORTAR)
+   ======================================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.2rem;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2.2rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-venue {
+  padding: 1.8rem 1.8rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Contenedor que mantiene el tamaño sin recortar las imágenes */
+.card-img-wrapper {
+  width: 100%;
+  max-width: 340px;
+  height: 250px;
+  margin: 0 auto 1.5rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: #FAF9F6;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  transition: var(--transition);
+}
+
+.card-venue:hover .card-img-wrapper {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+/* object-fit: contain para que la imagen se vea COMPLETA sin cortes */
+.card-venue-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: calc(var(--radius-md) - 6px);
+}
+
+.card-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-time {
+  font-size: 0.95rem;
+  color: var(--color-secondary);
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.card-place {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.card-address {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* ========================================================
+   INFORMACIÓN IMPORTANTE (3 TARJETAS CON EL MISMO FORMATO)
+   ======================================================== */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Las 3 tarjetas comparten exactamente el mismo diseño */
+.info-item {
+  text-align: center;
+  padding: 2.4rem 1.8rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.info-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.info-icon {
+  font-size: 2.2rem;
+  color: var(--color-primary);
+  margin-bottom: 1.2rem;
+}
+
+.info-item h4 {
+  font-size: 1.35rem;
+  margin-bottom: 0.8rem;
+}
+
+.info-item p {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.info-subtext {
+  margin-top: 0.8rem;
+  font-size: 0.86rem !important;
+  color: var(--color-secondary) !important;
+  font-style: italic;
+}
+
+/* ========================================================
+   FORMULARIO RSVP
+   ======================================================== */
+.badge-rsvp {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 0.3rem 0.9rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.rsvp-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.form-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  transition: var(--transition);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label-main {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.3rem;
+}
+
+.form-group label {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.required {
+  color: var(--color-danger);
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  background-color: #FAFAF8;
+  color: var(--color-text);
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(91, 110, 78, 0.2);
+}
+
+.form-help {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-top: -0.2rem;
+}
+
+/* Banner de aviso: Formulario individual */
+.individual-notice-banner {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-left: 5px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.notice-icon-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: rgba(78, 99, 80, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-size: 1.25rem;
+}
+
+.notice-text-content {
+  flex: 1;
+}
+
+.notice-heading {
+  font-size: 1.02rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.2rem;
+}
+
+.notice-description {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Tarjetas de Datos de Contacto */
+.guest-card {
+  background-color: var(--color-surface-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.guest-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-secondary);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.6rem;
+}
+
+/* Caja de aviso */
+.notice-box {
+  background-color: var(--color-warning-bg);
+  border: 1px solid var(--color-warning-border);
+  color: var(--color-warning-text);
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  line-height: 1.5;
+}
+
+.notice-box i {
+  font-size: 1.2rem;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+/* Sub-bloques condicionales */
+.conditional-subblock {
+  background-color: #FAF9F6;
+  border-left: 3px solid var(--color-primary);
+  padding: 1.2rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Opciones de Radio Card horizontales */
+.radio-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.radio-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.radio-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-content {
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: var(--transition);
+  background-color: #FAFAF8;
+}
+
+.radio-content i {
+  font-size: 1.1rem;
+}
+
+.radio-card input:checked + .radio-content {
+  border-color: var(--color-primary);
+  background-color: rgba(91, 110, 78, 0.12);
+  color: var(--color-primary);
+}
+
+.no-asiste-intro {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* Spinner & Feedback */
+.spinner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.form-feedback {
+  padding: 1.2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  text-align: center;
+  margin-top: 1rem;
+  animation: fadeIn 0.3s ease;
+  line-height: 1.5;
+}
+
+.form-feedback.success {
+  background-color: #EBF3E8;
+  color: #2E5C32;
+  border: 1px solid #C5DFC1;
+}
+
+.form-feedback.error {
+  background-color: #FFEBEE;
+  color: #C62828;
+  border: 1px solid #FFCDD2;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================================
+   SECCIÓN DE REGALO (Tono 4: #4E6350)
+   ======================================================== */
+.regalo-section {
+  background-color: var(--tone-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.regalo-card {
+  padding: 3.2rem 2.2rem;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 36px rgba(20, 30, 20, 0.25);
+}
+
+.regalo-icon {
+  font-size: 2.5rem;
+  color: var(--color-gold);
+  margin-bottom: 1.2rem;
+}
+
+.regalo-text {
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  color: var(--color-text);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.regalo-subtext {
+  font-size: 0.96rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.iban-wrapper {
+  max-width: 540px;
+  margin: 0 auto;
+  background-color: #FAFBF9;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.iban-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.8rem;
+}
+
+.iban-label i {
+  color: var(--color-primary);
+  margin-right: 0.4rem;
+}
+
+.iban-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  background-color: #FFFFFF;
+  border: 1.5px dashed var(--color-primary);
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.6rem;
+}
+
+.iban-number {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.05rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--color-text);
+  word-break: break-all;
+}
+
+.btn-copy {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.btn-copy:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-copy.copied {
+  background-color: var(--color-success);
+}
+
+.iban-note {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* ========================================================
+   FOOTER / CONTACTO CON CALIGRAFÍA DORADA
+   ======================================================== */
+.footer {
+  background-color: #1F261C;         /* Verde oliva muy profundo */
+  color: #E2E8DF;
+  padding: 4.5rem 1rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-calligraphy {
+  font-family: var(--font-script);
+  font-size: 5rem;
+  line-height: 1.35;
+  color: var(--color-gold-light);
+  display: inline-block;
+  padding: 0.15em 0.1em;
+  margin-bottom: 0.4rem;
+  font-weight: normal;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), 0 0 16px rgba(223, 200, 165, 0.35);
+}
+
+.footer-date {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  letter-spacing: 4px;
+  color: #9EA89A;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+}
+
+.footer-contact {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 1.8rem 1.5rem;
+  margin-bottom: 2.5rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-contact-title {
+  font-size: 0.95rem;
+  color: var(--color-gold-light);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+.contact-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-pill {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.6rem 1.1rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.contact-pill:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: var(--color-gold);
+}
+
+.contact-name {
+  font-weight: 600;
+  color: #fff;
+}
+
+.contact-link {
+  color: #E2E8DF;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition);
+}
+
+.contact-link:hover {
+  color: var(--color-gold-light);
+}
+
+.contact-wa {
+  color: #25D366;
+  font-size: 1.15rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.2rem;
+  transition: var(--transition);
+}
+
+.contact-wa:hover {
+  transform: scale(1.15);
+  color: #1EBE5D;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: #798675;
+}
+
+/* ========================================================
+   RESPONSIVE DESIGN (Móviles y Tablets)
+   ======================================================== */
+@media (max-width: 920px) {
+  .logo-desktop {
+    display: none;
+  }
+
+  .logo-mobile {
+    display: inline-block;
+    font-size: 2.1rem;
+    letter-spacing: 1px;
+  }
+
+  /* Disposición vertical en móvil: Nombres primero, Foto en medio, Cuenta atrás abajo */
+  .hero {
+    min-height: auto;
+    padding: 5.5rem 1rem 3.5rem;
+  }
+
+  .hero-container {
+    width: 94%;
+  }
+
+  .hero-split-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .hero-text-col {
+    display: contents;
+  }
+
+  /* 1. Nombres y Fecha PRIMERO */
+  .hero-titles-group {
+    order: 1;
+    text-align: center;
+    width: 100%;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    margin-bottom: 0.2rem;
+  }
+
+  .hero-names {
+    font-size: clamp(2.3rem, 7.8vw, 3.2rem);
+    line-height: 1.35;
+    padding: 0.15em 0.05em;
+    white-space: nowrap;
+    margin-bottom: 0.2rem;
+  }
+
+  .hero-date {
+    font-size: 1.05rem;
+    color: #4A5647;
+    margin-bottom: 0.2rem;
+  }
+
+  /* 2. Foto compacta y centrada EN MEDIO */
+  .hero-photo-col {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 0 0.8rem;
+  }
+
+  .hero-photo-frame {
+    max-width: 270px;
+    padding: 7px;
+    box-shadow: 0 10px 24px rgba(35, 45, 30, 0.14);
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: 290px;
+  }
+
+  /* 3. Cuenta atrás y Botón ABAJO */
+  .hero-actions-group {
+    order: 3;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .countdown-wrapper {
+    width: 100%;
+    max-width: 360px;
+    padding: 0.85rem 0.6rem;
+    margin: 0 auto 1.3rem;
+    box-sizing: border-box;
+  }
+
+  .countdown-title {
+    font-size: 0.78rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* 4 Cajas distribuidas al 100% sin salirse de la pantalla */
+  .countdown-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.35rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .countdown-divider {
+    display: none;
+  }
+
+  .countdown-box {
+    min-width: 0;
+    width: 100%;
+    padding: 0.55rem 0.15rem;
+    box-sizing: border-box;
+    border-radius: 6px;
+  }
+
+  .countdown-num {
+    font-size: 1.55rem;
+    line-height: 1;
+  }
+
+  .countdown-label {
+    font-size: 0.65rem;
+  }
+
+  .btn-hero {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.85rem 1.2rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.8rem 0;
+  }
+
+  .section-title {
+    font-size: 2.1rem;
+  }
+
+  .card-img-wrapper {
+    max-width: 100%;
+    height: 210px;
+  }
+
+  .footer-calligraphy {
+    font-size: 3.4rem;
+    line-height: 1.35;
+    padding: 0.15em 0.05em;
+  }
+
+  .contact-cards {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .iban-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .btn-copy {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--color-surface);
+    flex-direction: column;
+    padding: 1.5rem 0;
+    gap: 1.2rem;
+    box-shadow: var(--shadow-md);
+    display: none;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .radio-options {
+    grid-template-columns: 1fr;
+  }
+
+  .rsvp-card {
+    padding: 2rem 1.2rem;
+  }
+
+  .individual-notice-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 1.1rem;
+  }
+}
