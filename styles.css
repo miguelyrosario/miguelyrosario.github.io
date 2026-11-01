@@ -327,7 +327,8 @@ h1, h2, h3, h4, .section-title {
 }
 
 .hero-subtitle {
-  display: inline-block;
+  display: block;
+  width: 100%;
   font-size: 1.1rem;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -1011,6 +1012,7 @@ h1, h2, h3, h4, .section-title {
   font-family: 'Courier New', Courier, monospace;
   font-size: 1.05rem;
   font-weight: bold;
+  line-height: 1.4;
   letter-spacing: 1px;
   color: var(--color-text);
   word-break: break-all;
