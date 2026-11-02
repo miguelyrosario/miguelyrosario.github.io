@@ -100,103 +100,59 @@ function initMobileNav() {
 }
 
 /**
- * 3. INTERACTIVIDAD PROGRESIVA COMPLETA DEL FORMULARIO
+ * 3. INTERACTIVIDAD CONDICIONAL DEL FORMULARIO (CONFIRMACIÓN INDIVIDUAL)
  */
 function initFormInteractivity() {
+  // A. Toggle Asistencia (Sí vs No)
   const radioAsistencia = document.querySelectorAll('input[name="asistencia"]');
   const bloqueAsiste = document.getElementById("bloqueAsiste");
   const bloqueNoAsiste = document.getElementById("bloqueNoAsiste");
 
-  const pasoContacto = document.getElementById("pasoContacto");
-  const pasoAlergias = document.getElementById("pasoAlergias");
-  const pasoBus = document.getElementById("pasoBus");
-  const pasoOpcionales = document.getElementById("pasoOpcionales");
-
-  const invNombre = document.getElementById("invitado_nombre");
-  const invTel = document.getElementById("invitado_telefono");
-
+  const invNombre = document.getElementById("invitado_nombre") || document.getElementById("invitado1_nombre");
+  const invTel = document.getElementById("invitado_telefono") || document.getElementById("invitado1_telefono");
   const noAsisteNombre = document.getElementById("noasiste_nombre");
   const noAsisteTel = document.getElementById("noasiste_telefono");
-  const noAsisteOpcional = document.getElementById("noAsisteOpcional");
 
-  const radioAlergias = document.querySelectorAll('input[name="tiene_alergias"]');
-  const campoAlergiasDetalle = document.getElementById("campoAlergiasDetalle");
-  const textareaAlergias = document.getElementById("alergias_detalle");
-
-  const radioBus = document.querySelectorAll('input[name="servicio_bus"]');
-  const submitBtn = document.getElementById("submitBtn");
-
-  // 1. Pregunta inicial: ¿Podrás acompañarnos?
   radioAsistencia.forEach((radio) => {
     radio.addEventListener("change", (e) => {
-      // Ocultamos el botón de enviar hasta que lleguen a su paso final
-      if (submitBtn) submitBtn.classList.add("hidden");
-
       if (e.target.value === "No podré asistir") {
         bloqueAsiste.classList.add("hidden");
         bloqueNoAsiste.classList.remove("hidden");
-        if (noAsisteNombre) noAsisteNombre.required = true;
-        if (noAsisteTel) noAsisteTel.required = true;
+
         if (invNombre) invNombre.required = false;
         if (invTel) invTel.required = false;
-        checkNoAsisteContacto();
+        if (noAsisteNombre) noAsisteNombre.required = true;
+        if (noAsisteTel) noAsisteTel.required = true;
       } else {
         bloqueAsiste.classList.remove("hidden");
         bloqueNoAsiste.classList.add("hidden");
+
         if (invNombre) invNombre.required = true;
         if (invTel) invTel.required = true;
         if (noAsisteNombre) noAsisteNombre.required = false;
         if (noAsisteTel) noAsisteTel.required = false;
-        checkAsisteContacto();
       }
     });
   });
 
-  // 2. FLUJO ASISTE: Al escribir Nombre y Teléfono se abre Alergias
-  function checkAsisteContacto() {
-    const n = invNombre ? invNombre.value.trim() : "";
-    const t = invTel ? invTel.value.trim() : "";
-    if (n.length >= 3 && t.length >= 6) {
-      if (pasoAlergias) pasoAlergias.classList.remove("hidden");
-    }
-  }
-  if (invNombre) invNombre.addEventListener("input", checkAsisteContacto);
-  if (invTel) invTel.addEventListener("input", checkAsisteContacto);
+  // B. Toggle Alergias / Celiaquía (No vs Sí)
+  const radioAlergias = document.querySelectorAll('input[name="tiene_alergias"]');
+  const campoAlergiasDetalle = document.getElementById("campoAlergiasDetalle");
+  const textareaAlergias = document.getElementById("alergias_detalle");
 
-  // 3. FLUJO ASISTE: Al responder Alergias se abre Autobús
   radioAlergias.forEach((radio) => {
     radio.addEventListener("change", (e) => {
       if (e.target.value === "Sí") {
-        if (campoAlergiasDetalle) campoAlergiasDetalle.classList.remove("hidden");
+        campoAlergiasDetalle.classList.remove("hidden");
         if (textareaAlergias) textareaAlergias.required = true;
       } else {
-        if (campoAlergiasDetalle) campoAlergiasDetalle.classList.add("hidden");
+        campoAlergiasDetalle.classList.add("hidden");
         if (textareaAlergias) textareaAlergias.required = false;
       }
-      if (pasoBus) pasoBus.classList.remove("hidden");
     });
   });
-
-  // 4. FLUJO ASISTE: Al responder Autobús se abren las no obligatorias y el botón de enviar
-  radioBus.forEach((radio) => {
-    radio.addEventListener("change", () => {
-      if (pasoOpcionales) pasoOpcionales.classList.remove("hidden");
-      if (submitBtn) submitBtn.classList.remove("hidden");
-    });
-  });
-
-  // 5. FLUJO NO ASISTE: Al escribir Nombre y Teléfono se abre el mensaje y el botón de enviar
-  function checkNoAsisteContacto() {
-    const n = noAsisteNombre ? noAsisteNombre.value.trim() : "";
-    const t = noAsisteTel ? noAsisteTel.value.trim() : "";
-    if (n.length >= 3 && t.length >= 6) {
-      if (noAsisteOpcional) noAsisteOpcional.classList.remove("hidden");
-      if (submitBtn) submitBtn.classList.remove("hidden");
-    }
-  }
-  if (noAsisteNombre) noAsisteNombre.addEventListener("input", checkNoAsisteContacto);
-  if (noAsisteTel) noAsisteTel.addEventListener("input", checkNoAsisteContacto);
 }
+
 /**
  * 4. ENVÍO Y SINCRONIZACIÓN CON GOOGLE SHEETS
  */
