@@ -223,14 +223,14 @@
           </div>
         </div>
 
-                <form id="rsvpForm" class="rsvp-form">
+        <form id="rsvpForm" class="rsvp-form">
 
-          <!-- 1. PREGUNTA INICIAL (ÚNICA VISIBLE AL PRINCIPIO, NINGUNA MARCADA) -->
+          <!-- 1. ¿Podrás acompañarnos? -->
           <div class="form-group">
             <label class="form-label-main">¿Podrás acompañarnos el 11 de Septiembre? <span class="required">*</span></label>
             <div class="radio-options">
               <label class="radio-card">
-                <input type="radio" name="asistencia" value="Sí, asistiré" required>
+                <input type="radio" name="asistencia" value="Sí, asistiré" required checked>
                 <div class="radio-content">
                   <i class="fas fa-check-circle"></i>
                   <span>¡Sí, allí estaré!</span>
@@ -238,7 +238,7 @@
               </label>
 
               <label class="radio-card">
-                <input type="radio" name="asistencia" value="No podré asistir" required>
+                <input type="radio" name="asistencia" value="No podré asistir">
                 <div class="radio-content">
                   <i class="fas fa-times-circle"></i>
                   <span>No podré asistir</span>
@@ -248,116 +248,110 @@
           </div>
 
           <!-- ============================================== -->
-          <!-- FLUJO A: SI ASISTE A LA BODA                   -->
+          <!-- BLOQUE A: SI ASISTE A LA BODA                  -->
           <!-- ============================================== -->
-          <div id="bloqueAsiste" class="form-section-block hidden">
+          <div id="bloqueAsiste" class="form-section-block">
 
-            <!-- Paso A1: Datos de Contacto -->
-            <div id="pasoContacto" class="step-transition">
-              <div class="guest-card">
-                <div class="guest-card-header">
-                  <i class="fas fa-id-card"></i>
-                  <span>Tus Datos de Contacto</span>
-                </div>
-                <div class="form-group">
-                  <label for="invitado_nombre">Nombre y Apellidos <span class="required">*</span></label>
-                  <input type="text" id="invitado_nombre" name="invitado_nombre" placeholder="Ej. Carlos Martínez Ruiz">
-                </div>
-                <div class="form-group">
-                  <label for="invitado_telefono">Teléfono / WhatsApp <span class="required">*</span></label>
-                  <input type="tel" id="invitado_telefono" name="invitado_telefono" placeholder="Ej. 612 345 678">
-                </div>
+            <!-- 2. Datos de Contacto del Asistente -->
+            <div class="guest-card">
+              <div class="guest-card-header">
+                <i class="fas fa-id-card"></i>
+                <span>Tus Datos de Contacto</span>
               </div>
-
-              <!-- Aviso adultos -->
-              <div class="notice-box" style="margin-top: 1.2rem;">
-                <i class="fas fa-info-circle"></i>
-                <div>
-                  <strong>Aviso importante:</strong> La boda es exclusivamente para adultos. Si tienes alguna situación concreta con niños o bebés (incluso recién nacidos), por favor ponte en contacto directamente con nosotros para valorarlo juntos.
-                </div>
+              <div class="form-group">
+                <label for="invitado_nombre">Nombre y Apellidos <span class="required">*</span></label>
+                <input type="text" id="invitado_nombre" name="invitado_nombre" placeholder="Ej. Carlos Martínez Ruiz" required>
+              </div>
+              <div class="form-group">
+                <label for="invitado_telefono">Teléfono / WhatsApp <span class="required">*</span></label>
+                <input type="tel" id="invitado_telefono" name="invitado_telefono" placeholder="Ej. 612 345 678" required>
               </div>
             </div>
 
-            <!-- Paso A2: Alergias (aparece tras escribir nombre y teléfono) -->
-            <div id="pasoAlergias" class="step-transition hidden">
-              <div class="form-group">
-                <label class="form-label-main">¿Tienes alguna celiaquía, alergia o intolerancia alimentaria? <span class="required">*</span></label>
-                <div class="radio-options">
-                  <label class="radio-card">
-                    <input type="radio" name="tiene_alergias" value="No">
-                    <div class="radio-content">
-                      <i class="fas fa-utensils"></i>
-                      <span>No, como de todo</span>
-                    </div>
-                  </label>
-                  <label class="radio-card">
-                    <input type="radio" name="tiene_alergias" value="Sí">
-                    <div class="radio-content">
-                      <i class="fas fa-exclamation-triangle"></i>
-                      <span>Sí, tengo alergias/intolerancias</span>
-                    </div>
-                  </label>
-                </div>
-              </div>
-
-              <!-- Detalle si tiene alergias -->
-              <div id="campoAlergiasDetalle" class="form-group hidden conditional-subblock" style="margin-top: 1rem;">
-                <label for="alergias_detalle">Indícanos por favor qué alergia, celiaquía o menú especial requieres: <span class="required">*</span></label>
-                <textarea id="alergias_detalle" name="alergias_detalle" rows="3" placeholder="Ej. Celíaco/a (sin gluten), intolerancia a la lactosa, vegetariano/a..."></textarea>
+            <!-- Aviso relevante para tener en cuenta (Celebración para adultos) -->
+            <div class="notice-box">
+              <i class="fas fa-info-circle"></i>
+              <div>
+                <strong>Aviso importante:</strong> La boda es exclusivamente para adultos. Si tienes alguna situación concreta con niños o bebés (incluso recién nacidos), por favor ponte en contacto directamente con nosotros para valorarlo juntos.
               </div>
             </div>
 
-            <!-- Paso A3: Autobús (aparece tras responder a alergias) -->
-            <div id="pasoBus" class="step-transition hidden">
-              <div class="form-group">
-                <label class="form-label-main">¿Necesitas servicio de bus Madrid-Guadalajara y Guadalajara-Madrid? <span class="required">*</span></label>
-                <div class="radio-options">
-                  <label class="radio-card">
-                    <input type="radio" name="servicio_bus" value="Sí">
-                    <div class="radio-content">
-                      <i class="fas fa-bus"></i>
-                      <span>Sí</span>
-                    </div>
-                  </label>
-                  <label class="radio-card">
-                    <input type="radio" name="servicio_bus" value="No">
-                    <div class="radio-content">
-                      <i class="fas fa-times"></i>
-                      <span>No</span>
-                    </div>
-                  </label>
-                </div>
-                <p class="form-help" style="margin-top: 0.5rem;">
-                  <i class="fas fa-info-circle"></i> Este servicio estará disponible en función de cuánta gente lo necesite. Además, informaremos de todos los detalles a quienes lo soliciten.
-                </p>
+            <!-- 3. Alimentación / Alergias / Celiaquía -->
+            <div class="form-group">
+              <label class="form-label-main">¿Tienes alguna celiaquía, alergia o intolerancia alimentaria? <span class="required">*</span></label>
+              <div class="radio-options">
+                <label class="radio-card">
+                  <input type="radio" name="tiene_alergias" value="No" checked>
+                  <div class="radio-content">
+                    <i class="fas fa-utensils"></i>
+                    <span>No, como de todo</span>
+                  </div>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="tiene_alergias" value="Sí">
+                  <div class="radio-content">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Sí, tengo alergias/intolerancias</span>
+                  </div>
+                </label>
               </div>
             </div>
 
-            <!-- Paso A4: No obligatorias (aparecen tras responder autobús) -->
-            <div id="pasoOpcionales" class="step-transition hidden">
-              <div class="form-group">
-                <label for="cancion">¿Qué canción no puede faltar en la fiesta?</label>
-                <input type="text" id="cancion" name="cancion" placeholder="Título y artista (ej. Volando voy - Camarón / Dua Lipa)">
+            <!-- Desplegable solo si responde SÍ a alergias -->
+            <div id="campoAlergiasDetalle" class="form-group hidden conditional-subblock">
+              <label for="alergias_detalle">Indícanos por favor qué alergia, celiaquía o menú especial requieres: <span class="required">*</span></label>
+              <textarea id="alergias_detalle" name="alergias_detalle" rows="3" placeholder="Ej. Celíaco/a (sin gluten), intolerancia a la lactosa, vegetariano/a..."></textarea>
+            </div>
+
+            <!-- 4. Servicio de Autobús Madrid-Guadalajara y Guadalajara-Madrid -->
+            <div class="form-group">
+              <label class="form-label-main">¿Necesitas servicio de bus Madrid-Guadalajara y Guadalajara-Madrid? <span class="required">*</span></label>
+
+              <div class="radio-options">
+                <label class="radio-card">
+                  <input type="radio" name="servicio_bus" value="Sí" required>
+                  <div class="radio-content">
+                    <i class="fas fa-bus"></i>
+                    <span>Sí</span>
+                  </div>
+                </label>
+
+                <label class="radio-card">
+                  <input type="radio" name="servicio_bus" value="No" checked>
+                  <div class="radio-content">
+                    <i class="fas fa-times"></i>
+                    <span>No</span>
+                  </div>
+                </label>
               </div>
 
-              <div class="form-group" style="margin-top: 1.2rem;">
-                <label for="mensaje">Mensaje o dedicatoria para Miguel & Rosario:</label>
-                <textarea id="mensaje" name="mensaje" rows="2" placeholder="Escríbenos lo que quieras..."></textarea>
-              </div>
+              <p class="form-help" style="margin-top: 0.5rem;">
+                <i class="fas fa-info-circle"></i> Este servicio estará disponible en función de cuánta gente lo necesite. Además, informaremos de todos los detalles a quienes lo soliciten.
+              </p>
+            </div>
+
+            <!-- 5. Canción recomendada -->
+            <div class="form-group">
+              <label for="cancion">¿Qué canción no puede faltar en la fiesta?</label>
+              <input type="text" id="cancion" name="cancion" placeholder="Título y artista (ej. Volando voy - Camarón / Dua Lipa)">
+            </div>
+
+            <!-- 6. Mensaje para Miguel y Rosario -->
+            <div class="form-group">
+              <label for="mensaje">Mensaje o dedicatoria para Miguel & Rosario:</label>
+              <textarea id="mensaje" name="mensaje" rows="2" placeholder="Escríbenos lo que quieras..."></textarea>
             </div>
 
           </div>
 
           <!-- ============================================== -->
-          <!-- FLUJO B: SI NO PUEDE ASISTIR                   -->
+          <!-- BLOQUE B: SI NO PUEDE ASISTIR                  -->
           <!-- ============================================== -->
           <div id="bloqueNoAsiste" class="form-section-block hidden">
-            <div class="guest-card step-transition">
+            <div class="guest-card">
               <p class="no-asiste-intro">
                 Sentiremos mucho no tenerte con nosotros ese día, ¡pero te agradecemos un montón que nos avises! Por favor déjanos tus datos para registrarlo:
               </p>
-
-              <!-- Paso B1: Contacto No Asiste -->
               <div class="form-group">
                 <label for="noasiste_nombre">Tu Nombre y Apellidos <span class="required">*</span></label>
                 <input type="text" id="noasiste_nombre" name="noasiste_nombre" placeholder="Tu nombre y apellidos">
@@ -366,19 +360,15 @@
                 <label for="noasiste_telefono">Tu Teléfono / WhatsApp <span class="required">*</span></label>
                 <input type="tel" id="noasiste_telefono" name="noasiste_telefono" placeholder="Tu teléfono">
               </div>
-
-              <!-- Paso B2: Opcional No Asiste (aparece tras escribir nombre y teléfono) -->
-              <div id="noAsisteOpcional" class="step-transition hidden" style="margin-top: 0.8rem;">
-                <div class="form-group">
-                  <label for="noasiste_mensaje">¿Quieres dejarnos un mensaje?</label>
-                  <textarea id="noasiste_mensaje" name="noasiste_mensaje" rows="2" placeholder="Os deseamos lo mejor..."></textarea>
-                </div>
+              <div class="form-group">
+                <label for="noasiste_mensaje">¿Quieres dejarnos un mensaje?</label>
+                <textarea id="noasiste_mensaje" name="noasiste_mensaje" rows="2" placeholder="Os deseamos lo mejor..."></textarea>
               </div>
             </div>
           </div>
 
-          <!-- BOTÓN DE ENVÍO (Oculto al inicio, aparece solo al llegar a las preguntas no obligatorias) -->
-          <button type="submit" id="submitBtn" class="btn btn-primary btn-block step-transition hidden">
+          <!-- Botón de Envío -->
+          <button type="submit" id="submitBtn" class="btn btn-primary btn-block">
             <span id="btnText"><i class="fas fa-paper-plane"></i> Enviar Confirmación</span>
             <span id="btnSpinner" class="spinner hidden"><i class="fas fa-circle-notch fa-spin"></i> Guardando respuesta...</span>
           </button>
