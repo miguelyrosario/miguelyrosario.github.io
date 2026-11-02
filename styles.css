@@ -1065,6 +1065,7 @@ h1, h2, h3, h4, .section-title {
   line-height: 1.35;
   color: var(--color-gold-light);
   display: inline-block;
+  white-space: nowrap;
   padding: 0.15em 0.1em;
   margin-bottom: 0.4rem;
   font-weight: normal;
@@ -1320,8 +1321,9 @@ h1, h2, h3, h4, .section-title {
   }
 
   .footer-calligraphy {
-    font-size: 3.4rem;
+    font-size: clamp(2.2rem, 7.8vw, 3.2rem);
     line-height: 1.35;
+    white-space: nowrap;
     padding: 0.15em 0.05em;
   }
 
