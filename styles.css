@@ -513,6 +513,7 @@ h1, h2, h3, h4, .section-title {
    BIENVENIDA
    ======================================================== */
 .welcome-section {
+  background-color: #FFFFFF;
   padding: 4.5rem 0 3.5rem;
 }
 
